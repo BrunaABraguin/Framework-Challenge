@@ -4,3 +4,5 @@ export class Task {
   title: string;
   completed: boolean;
 }
+
+export default Task;

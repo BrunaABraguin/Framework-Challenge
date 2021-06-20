@@ -17,11 +17,12 @@
   </tbody>
 </table> -->
 
-<select [(ngModel)]="TasksUserId" (ngModelChange)='onUserSelected($event)'>
-  <option *ngFor="let task of tasks" [value]="task.userId">
-    {{task.userId}}
-  </option>
-</select>
+<mat-form-field appearance="fill">
+  <mat-label>Lista de Tarefas de:</mat-label>
+  <mat-select [(ngModel)]="TasksUserId" (ngModelChange)='onUserSelected($event)'>
+    <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}}</mat-option>
+  </mat-select>
+</mat-form-field>
 
 <p>Usuário selecionado: {{TasksUserId}}</p>
 
@@ -42,7 +43,7 @@
   </tbody>
 </table>
 
-<p>id: {{addTask?.id}}</p>
+<!-- <p>id: {{addTask?.id}}</p>
 <p>user ID: {{addTask?.userId}}</p>
 <p>title: {{addTask?.title}}</p>
 
@@ -53,4 +54,4 @@
 <p>id: {{taskPatch?.id}}</p>
 <p>title: {{taskPatch?.title}}</p>
 
-<p>{{message}}</p>
+<p>{{message}}</p> -->

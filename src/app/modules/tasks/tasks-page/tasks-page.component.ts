@@ -1,3 +1,4 @@
+import { User } from "./../../../shared/models/user";
 import { TasksService } from "./../tasks.service";
 import { Component, OnInit } from "@angular/core";
 import { Task } from "src/app/shared/models/task";
@@ -10,6 +11,7 @@ import { Task } from "src/app/shared/models/task";
 export class TasksPageComponent implements OnInit {
   constructor(private tasksService: TasksService) {}
   tasks: Task[];
+  users: User[];
   tasksUser: Task[];
   addTask: Task;
   updateTask: Task;
@@ -21,6 +23,10 @@ export class TasksPageComponent implements OnInit {
   ngOnInit() {
     this.tasksService.getTasks().subscribe((data) => {
       this.tasks = data;
+    });
+
+    this.tasksService.getUsersName().subscribe((data) => {
+      this.users = data;
     });
 
     const taskAdd = new Task();

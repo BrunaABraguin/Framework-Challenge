@@ -14,6 +14,10 @@ export class TasksService {
     return this.httpclient.get(API.API_URL + "/todos");
   }
 
+  getUsersName(): Observable<any> {
+    return this.httpclient.get(API.API_URL + "/users");
+  };
+
   getTasksByUser(tasksUserId: string): Observable<any> {
     const param = new HttpParams().set("userId", tasksUserId);
     return this.httpclient.get(API.API_URL + "/todos", { params: param });
