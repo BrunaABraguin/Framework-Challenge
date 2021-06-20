@@ -10,7 +10,7 @@ import { map, shareReplay } from 'rxjs/operators';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'Challenge Angular';
+  title = 'Desafio de Angular';
 
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)

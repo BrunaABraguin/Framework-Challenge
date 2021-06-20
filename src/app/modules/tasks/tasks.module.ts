@@ -12,6 +12,7 @@ import {
   MatCardModule,
   MatDividerModule,
   MatListModule,
+  MatMenuModule,
 } from "@angular/material";
 
 @NgModule({
@@ -27,6 +28,7 @@ import {
     MatCardModule,
     MatDividerModule,
     MatListModule,
+    MatMenuModule,
   ],
   providers: [TasksService],
 })

@@ -1,6 +1,7 @@
 .mat {
   &-checkbox {
     display: block;
+    line-height: 3rem;
 
     &-checked {
       text-decoration: line-through;
@@ -8,8 +9,10 @@
   }
 
   &-card {
-    width: 50%;
+    width: 58%;
     margin: 2rem auto;
+    font-size: 1.1rem;
+    padding: 1.25rem 2.5rem;
   }
 
   &-form-field {
@@ -20,4 +23,16 @@
 .container {
   display: flex;
   justify-content: center;
+  margin-top: 2rem;
+}
+
+button.mat-menu-trigger.mat-icon-button.mat-button-base
+{
+  position: absolute;
+  right: 2.25rem;
+  vertical-align: middle;
+
+  .more-icon {
+    margin-bottom: 2.1875rem;
+  }
 }
