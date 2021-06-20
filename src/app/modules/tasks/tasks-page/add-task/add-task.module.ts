@@ -1,12 +1,36 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { MatButtonModule, MatInputModule } from "@angular/material";
 import { FormsModule } from "@angular/forms";
 
-import { MatFormFieldModule } from "@angular/material/form-field";
+import {
+  MatCheckboxModule,
+  MatIconModule,
+  MatSelectModule,
+  MatButtonModule,
+  MatCardModule,
+  MatDividerModule,
+  MatListModule,
+  MatMenuModule,
+  MatDialogModule,
+  MatSnackBarModule,
+} from "@angular/material";
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, MatButtonModule, MatInputModule, FormsModule],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatCardModule,
+    MatDividerModule,
+    MatListModule,
+    MatMenuModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    FormsModule,
+  ],
 })
 export class AddTaskModule {}

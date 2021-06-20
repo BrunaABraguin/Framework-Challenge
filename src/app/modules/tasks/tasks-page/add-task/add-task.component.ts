@@ -14,4 +14,8 @@ export class AddTaskComponent implements OnInit {
   ) {}
 
   ngOnInit() {}
+
+  onCancel(){
+    this.dialogRef.close();
+  }
 }

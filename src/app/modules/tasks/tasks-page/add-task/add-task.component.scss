@@ -1,0 +1,13 @@
+.input-title {
+  outline: none;
+  border: none;
+  border-bottom: 0.125rem solid var(--dark-primary-color);
+  width: 100%;
+  margin-bottom: 1rem;
+  line-height: 25px;
+}
+
+.mat-dialog-actions {
+  margin-bottom: 0;
+  justify-content: flex-end;
+}

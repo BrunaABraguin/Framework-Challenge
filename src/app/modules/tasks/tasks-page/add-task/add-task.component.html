@@ -1,16 +1,14 @@
 <h1 mat-dialog-title>Adicione uma tarefa</h1>
 <section mat-dialog-content>
-  <mat-form-field appearance="fill">
-    <input
-      matInput
+    <input class="input-title"
       type="text"
       name="title"
       id="title"
       [(ngModel)]="data.title"
     />
-  </mat-form-field>
 </section>
 <div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
   <button
     type="submit"
     mat-flat-button
