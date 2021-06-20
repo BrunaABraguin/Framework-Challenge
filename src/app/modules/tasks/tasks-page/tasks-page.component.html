@@ -17,6 +17,31 @@
   </tbody>
 </table>
 
+<select [(ngModel)]="TasksUserId" (ngModelChange)='onUserSelected($event)'>
+  <option *ngFor="let task of tasks" [value]="task.userId">
+    {{task.userId}}
+  </option>
+</select>
+
+<p>Usuário selecionado: {{TasksUserId}}</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>User ID</th>
+      <th>ID</th>
+      <th>Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of tasksUser">
+      <td>{{ task.userId}}</td>
+      <td>{{ task.id}}</td>
+      <td>{{ task.title}}</td>
+    </tr>
+  </tbody>
+</table>
+
 <p>id: {{addTask?.id}}</p>
 <p>user ID: {{addTask?.userId}}</p>
 <p>title: {{addTask?.title}}</p>

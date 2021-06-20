@@ -17,7 +17,7 @@ export class AlbumsPageComponent implements OnInit {
   albumPatch: Album;
   message: string;
 
-  AlbumUserId: number;
+  AlbumsUserId: number;
 
   ngOnInit() {
     this.albumsService.getAlbums().subscribe(data => {
@@ -63,8 +63,8 @@ export class AlbumsPageComponent implements OnInit {
     );
   }
 
-  onUserSelected(albumId: any): void {
-    this.albumsService.getAlbumByUser(albumId).subscribe(data => {
+  onUserSelected(albumUserId: any): void {
+    this.albumsService.getAlbumByUser(albumUserId).subscribe((data) => {
       this.albumsUser = data;
     });
   }

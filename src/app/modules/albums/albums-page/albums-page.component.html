@@ -15,13 +15,13 @@
   </tbody>
 </table>
 
-<select [(ngModel)]="AlbumUserId" (ngModelChange)='onUserSelected($event)'>
+<select [(ngModel)]="AlbumsUserId" (ngModelChange)='onUserSelected($event)'>
   <option *ngFor="let album of albums" [value]="album.userId">
     {{album.userId}}
   </option>
 </select>
 
-<p>Usuário selecionado: {{AlbumUserId}}</p>
+<p>Usuário selecionado: {{AlbumsUserId}}</p>
 
 <table>
   <thead>

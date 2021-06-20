@@ -9,13 +9,21 @@
   </thead>
   <tbody>
     <tr *ngFor="let post of posts">
-      <td>{{post.userId}}</td>
-      <td>{{post.id}}</td>
-      <td>{{post.title}}</td>
-      <td>{{post.body}}</td>
+      <td>{{ post.userId }}</td>
+      <td>{{ post.id }}</td>
+      <td>{{ post.title }}</td>
+      <td>{{ post.body }}</td>
     </tr>
   </tbody>
 </table>
+
+<select [(ngModel)]="PostsUserId" (ngModelChange)="onUserSelected($event)">
+  <option *ngFor="let post of posts" [value]="post.userId">
+    {{ post.userId }}
+  </option>
+</select>
+
+<p>Usuário selecionado: {{ PostsUserId }}</p>
 
 <table>
   <thead>
@@ -23,31 +31,28 @@
       <th>User ID</th>
       <th>ID</th>
       <th>Title</th>
-      <th>Body</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let postUser of postsUser">
-      <td>{{postUser.userId}}</td>
-      <td>{{postUser.id}}</td>
-      <td>{{postUser.title}}</td>
-      <td>{{postUser.body}}</td>
+    <tr *ngFor="let post of postsUser">
+      <td>{{ post.userId }}</td>
+      <td>{{ post.id }}</td>
+      <td>{{ post.title }}</td>
     </tr>
   </tbody>
 </table>
 
-<p>id: {{addPost?.id}}</p>
-<p>user ID: {{addPost?.userId}}</p>
-<p>title: {{addPost?.title}}</p>
-<p>body: {{addPost?.body}}</p>
+<p>id: {{ addPost?.id }}</p>
+<p>user ID: {{ addPost?.userId }}</p>
+<p>title: {{ addPost?.title }}</p>
+<p>body: {{ addPost?.body }}</p>
 
-<p>id: {{updatePost?.id}}</p>
-<p>user ID: {{updatePost?.userId}}</p>
-<p>title: {{updatePost?.title}}</p>
-<p>body: {{updatePost?.body}}</p>
+<p>id: {{ updatePost?.id }}</p>
+<p>user ID: {{ updatePost?.userId }}</p>
+<p>title: {{ updatePost?.title }}</p>
+<p>body: {{ updatePost?.body }}</p>
 
-<p>id: {{postPatch?.id}}</p>
-<p>title: {{postPatch?.title}}</p>
+<p>id: {{ postPatch?.id }}</p>
+<p>title: {{ postPatch?.title }}</p>
 
-<p>{{message}}</p>
-
+<p>{{ message }}</p>

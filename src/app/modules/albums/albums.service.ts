@@ -16,8 +16,8 @@ export class AlbumsService {
     return this.httpclient.get(API.API_URL + '/albums');
   }
 
-  getAlbumByUser(albumId: string): Observable<any> {
-    const param = new HttpParams().set('userId', albumId);
+  getAlbumByUser(albumsUserId: string): Observable<any> {
+    const param = new HttpParams().set('userId', albumsUserId);
     return this.httpclient.get(API.API_URL + '/albums', { params: param });
   }
 

@@ -5,11 +5,10 @@ import Post from 'src/app/shared/models/post';
 @Component({
   selector: 'app-posts-page',
   templateUrl: './posts-page.component.html',
-  styleUrls: ['./posts-page.component.scss']
+  styleUrls: ['./posts-page.component.scss'],
 })
 export class PostsPageComponent implements OnInit {
-
-  constructor(private postsService: PostsService) { }
+  constructor(private postsService: PostsService) {}
   posts: Post[];
   postsUser: Post[];
   addPost: Post;
@@ -17,13 +16,11 @@ export class PostsPageComponent implements OnInit {
   postPatch: Post;
   message: string;
 
-  ngOnInit() {
-    this.postsService.getPosts().subscribe(data => {
-      this.posts = data;
-    });
+  PostsUserId: number;
 
-    this.postsService.getPostsByUser().subscribe(data => {
-      this.postsUser = data;
+  ngOnInit() {
+    this.postsService.getPosts().subscribe((data) => {
+      this.posts = data;
     });
 
     const postAdd = new Post();
@@ -32,11 +29,9 @@ export class PostsPageComponent implements OnInit {
     postAdd.title = 'A title';
     postAdd.userId = 1;
 
-    this.postsService.addPost(postAdd).subscribe(
-      data => {
-        this.addPost = data;
-      }
-    );
+    this.postsService.addPost(postAdd).subscribe((data) => {
+      this.addPost = data;
+    });
 
     const postUpdate = new Post();
 
@@ -44,29 +39,26 @@ export class PostsPageComponent implements OnInit {
     postUpdate.title = 'A new title';
     postUpdate.userId = 1;
 
-    this.postsService.updatePost(postUpdate).subscribe(
-      data => {
-        this.updatePost = data;
-      }
-    );
+    this.postsService.updatePost(postUpdate).subscribe((data) => {
+      this.updatePost = data;
+    });
 
     const postPatch = new Post();
 
     postPatch.title = 'A newer title';
 
-    this.postsService.patchPost(postPatch).subscribe(
-      data => {
-        this.postPatch = data;
-      }
-    );
+    this.postsService.patchPost(postPatch).subscribe((data) => {
+      this.postPatch = data;
+    });
 
-    this.postsService.deletePost().subscribe(
-      data => {
-        this.message = 'Postagem deletada com sucesso.';
-      }
-    );
+    this.postsService.deletePost().subscribe((data) => {
+      this.message = 'Postagem deletada com sucesso.';
+    });
   }
 
-
-
+  onUserSelected(postsUserId: any): void {
+    this.postsService.getPostsByUser(postsUserId).subscribe((data) => {
+      this.postsUser = data;
+    });
+  }
 }

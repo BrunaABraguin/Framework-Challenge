@@ -16,8 +16,8 @@ export class PostsService {
     return this.httpclient.get(API.API_URL + '/posts');
   }
 
-  getPostsByUser(): Observable<any> {
-    const param = new HttpParams().set('userId', '1');
+  getPostsByUser(postsUserId: string): Observable<any> {
+    const param = new HttpParams().set('userId', postsUserId);
     return this.httpclient.get(API.API_URL + '/posts', { params: param });
   }
 
