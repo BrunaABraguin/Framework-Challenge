@@ -14,11 +14,13 @@ import {
   MatListModule,
   MatMenuModule,
   MatDialogModule,
+  MatSnackBarModule,
 } from "@angular/material";
 import { AddTaskComponent } from "./tasks-page/add-task/add-task.component";
+import { DeleteTaskComponent } from './tasks-page/delete-task/delete-task.component';
 
 @NgModule({
-  declarations: [TasksPageComponent, AddTaskComponent],
+  declarations: [TasksPageComponent, AddTaskComponent, DeleteTaskComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -32,6 +34,7 @@ import { AddTaskComponent } from "./tasks-page/add-task/add-task.component";
     MatListModule,
     MatMenuModule,
     MatDialogModule,
+    MatSnackBarModule,
   ],
   providers: [TasksService],
   entryComponents: [AddTaskComponent],

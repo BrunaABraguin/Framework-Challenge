@@ -10,10 +10,8 @@ import { User } from "src/app/shared/models/user";
 })
 export class PostsPageComponent implements OnInit {
   constructor(private postsService: PostsService) {}
-  posts: Post[] = [];
-
+  posts: Post[];
   users: User[];
-
   postsUser: Post[];
   addPost: Post;
   updatePost: Post;
@@ -48,8 +46,6 @@ export class PostsPageComponent implements OnInit {
   }
 
   onSubmitCreate(post) {
-    console.log(post);
-
     const postAdd = new Post();
 
     postAdd.body = post.body;
@@ -57,7 +53,7 @@ export class PostsPageComponent implements OnInit {
     postAdd.userId = 1;
 
     this.postsService.addPost(postAdd).subscribe((data) => {
-      this.postsUser.splice(0, 0, post);
+      this.postsUser.splice(0, 0, postAdd);
     });
   }
 

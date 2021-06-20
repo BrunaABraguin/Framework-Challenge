@@ -4,7 +4,7 @@ import { Component, OnInit } from "@angular/core";
 import { Task } from "src/app/shared/models/task";
 import { MatDialog } from "@angular/material";
 
-import { AddTaskComponent } from './add-task/add-task.component';
+import { AddTaskComponent } from "./add-task/add-task.component";
 
 @Component({
   selector: "app-tasks-page",
@@ -17,25 +17,17 @@ export class TasksPageComponent implements OnInit {
   tasks: Task[];
   users: User[];
   tasksUser: Task[];
-  addTask: Task;
   updateTask: Task;
   taskPatch: Task;
   message: string;
   TasksUserId: number;
   isSelected: boolean;
 
+  title: string;
+
   ngOnInit() {
     this.fetchAllTasks();
     this.fetchAllUsers();
-
-    const taskAdd = new Task();
-
-    taskAdd.title = "A title";
-    taskAdd.userId = 1;
-
-    this.tasksService.addTask(taskAdd).subscribe((data) => {
-      this.addTask = data;
-    });
   }
 
   fetchAllTasks() {
@@ -65,11 +57,29 @@ export class TasksPageComponent implements OnInit {
 
       this.message = "Tarefa deletada com sucesso.";
 
+      setTimeout(() => {
+        this.message = null;
+      }, 3000);
+
       console.log(this.message);
     });
   }
 
   openDialog() {
-    this.dialog.open(AddTaskComponent);
+    const dialogRef = this.dialog.open(AddTaskComponent, {
+      data: { title: this.title },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      const taskAdd = new Task();
+
+      if (result != null) {
+        taskAdd.title = result;
+        taskAdd.userId = 1;
+        taskAdd.completed = false;
+
+        this.tasksUser.splice(0, 0, taskAdd);
+      }
+    });
   }
 }

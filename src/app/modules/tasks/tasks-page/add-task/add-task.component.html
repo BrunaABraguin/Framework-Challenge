@@ -1,1 +1,14 @@
-<p>add-task works!</p>
+<form #createTask="ngForm">
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      name="title"
+      id="title"
+      [(ngModel)]="data.title"
+    />
+  </mat-form-field>
+  <button type="submit" mat-button [mat-dialog-close]="data.title">
+    Submit
+  </button>
+</form>
