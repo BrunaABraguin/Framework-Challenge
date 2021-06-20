@@ -1,15 +1,14 @@
-import { AlbumsService } from './../albums.service';
-import { Component, OnInit } from '@angular/core';
-import { Album } from 'src/app/shared/models/album';
+import { AlbumsService } from "./../albums.service";
+import { Component, OnInit } from "@angular/core";
+import { Album } from "src/app/shared/models/album";
 
 @Component({
-  selector: 'app-albums-page',
-  templateUrl: './albums-page.component.html',
-  styleUrls: ['./albums-page.component.scss']
+  selector: "app-albums-page",
+  templateUrl: "./albums-page.component.html",
+  styleUrls: ["./albums-page.component.scss"],
 })
 export class AlbumsPageComponent implements OnInit {
-
-  constructor(private albumsService: AlbumsService) { }
+  constructor(private albumsService: AlbumsService) {}
   albums: Album[];
   albumsUser: Album[];
   addAlbum: Album;
@@ -20,47 +19,43 @@ export class AlbumsPageComponent implements OnInit {
   AlbumsUserId: number;
 
   ngOnInit() {
-    this.albumsService.getAlbums().subscribe(data => {
-      this.albums = data;
-    });
+    this.fetchAllAlbums();
 
     const albumAdd = new Album();
 
-    albumAdd.title = 'A title';
+    albumAdd.title = "A title";
     albumAdd.userId = 1;
 
-    this.albumsService.addAlbum(albumAdd).subscribe(
-      data => {
-        this.addAlbum = data;
-      }
-    );
+    this.albumsService.addAlbum(albumAdd).subscribe((data) => {
+      this.addAlbum = data;
+    });
 
     const albumUpdate = new Album();
 
-    albumUpdate.title = 'A new title';
+    albumUpdate.title = "A new title";
     albumUpdate.userId = 1;
 
-    this.albumsService.updateAlbum(albumUpdate).subscribe(
-      data => {
-        this.updateAlbum = data;
-      }
-    );
+    this.albumsService.updateAlbum(albumUpdate).subscribe((data) => {
+      this.updateAlbum = data;
+    });
 
     const albumPatch = new Album();
 
-    albumPatch.title = 'A newer title';
+    albumPatch.title = "A newer title";
 
-    this.albumsService.patchAlbum(albumPatch).subscribe(
-      data => {
-        this.albumPatch = data;
-      }
-    );
+    this.albumsService.patchAlbum(albumPatch).subscribe((data) => {
+      this.albumPatch = data;
+    });
 
-    this.albumsService.deleteAlbum().subscribe(
-      data => {
-        this.message = 'Álbum deletado com sucesso.';
-      }
-    );
+    this.albumsService.deleteAlbum().subscribe((data) => {
+      this.message = "Álbum deletado com sucesso.";
+    });
+  }
+
+  fetchAllAlbums() {
+    this.albumsService.getAlbums().subscribe((data) => {
+      this.albums = data;
+    });
   }
 
   onUserSelected(albumUserId: any): void {

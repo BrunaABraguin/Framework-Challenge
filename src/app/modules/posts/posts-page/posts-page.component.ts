@@ -1,11 +1,11 @@
-import { PostsService } from './../posts.service';
-import { Component, OnInit } from '@angular/core';
-import Post from 'src/app/shared/models/post';
+import { PostsService } from "./../posts.service";
+import { Component, OnInit } from "@angular/core";
+import Post from "src/app/shared/models/post";
 
 @Component({
-  selector: 'app-posts-page',
-  templateUrl: './posts-page.component.html',
-  styleUrls: ['./posts-page.component.scss'],
+  selector: "app-posts-page",
+  templateUrl: "./posts-page.component.html",
+  styleUrls: ["./posts-page.component.scss"],
 })
 export class PostsPageComponent implements OnInit {
   constructor(private postsService: PostsService) {}
@@ -19,14 +19,12 @@ export class PostsPageComponent implements OnInit {
   PostsUserId: number;
 
   ngOnInit() {
-    this.postsService.getPosts().subscribe((data) => {
-      this.posts = data;
-    });
+    this.fetchAllPosts();
 
     const postAdd = new Post();
 
-    postAdd.body = 'something in here';
-    postAdd.title = 'A title';
+    postAdd.body = "something in here";
+    postAdd.title = "A title";
     postAdd.userId = 1;
 
     this.postsService.addPost(postAdd).subscribe((data) => {
@@ -35,8 +33,8 @@ export class PostsPageComponent implements OnInit {
 
     const postUpdate = new Post();
 
-    postUpdate.body = 'something new in here';
-    postUpdate.title = 'A new title';
+    postUpdate.body = "something new in here";
+    postUpdate.title = "A new title";
     postUpdate.userId = 1;
 
     this.postsService.updatePost(postUpdate).subscribe((data) => {
@@ -45,17 +43,22 @@ export class PostsPageComponent implements OnInit {
 
     const postPatch = new Post();
 
-    postPatch.title = 'A newer title';
+    postPatch.title = "A newer title";
 
     this.postsService.patchPost(postPatch).subscribe((data) => {
       this.postPatch = data;
     });
 
     this.postsService.deletePost().subscribe((data) => {
-      this.message = 'Postagem deletada com sucesso.';
+      this.message = "Postagem deletada com sucesso.";
     });
   }
 
+  fetchAllPosts() {
+    this.postsService.getPosts().subscribe((data) => {
+      this.posts = data;
+    });
+  }
   onUserSelected(postsUserId: any): void {
     this.postsService.getPostsByUser(postsUserId).subscribe((data) => {
       this.postsUser = data;
