@@ -1,4 +1,4 @@
-<table>
+<!-- <table>
   <thead>
     <tr>
       <th>User ID</th>
@@ -15,7 +15,7 @@
       <td>{{task.completed}}</td>
     </tr>
   </tbody>
-</table>
+</table> -->
 
 <select [(ngModel)]="TasksUserId" (ngModelChange)='onUserSelected($event)'>
   <option *ngFor="let task of tasks" [value]="task.userId">
