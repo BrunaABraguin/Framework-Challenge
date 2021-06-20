@@ -1,7 +1,5 @@
-import { TasksService } from "./../../tasks.service";
 import { Component, Inject, OnInit } from "@angular/core";
 import { Task } from "src/app/shared/models/task";
-
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 @Component({
   selector: "app-add-task",

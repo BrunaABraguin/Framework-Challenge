@@ -2,9 +2,10 @@ import { User } from "./../../../shared/models/user";
 import { TasksService } from "./../tasks.service";
 import { Component, OnInit } from "@angular/core";
 import { Task } from "src/app/shared/models/task";
-import { MatDialog } from "@angular/material";
+import { MatDialog, MatSnackBar } from "@angular/material";
 
 import { AddTaskComponent } from "./add-task/add-task.component";
+import { DeleteTaskComponent } from "./delete-task/delete-task.component";
 
 @Component({
   selector: "app-tasks-page",
@@ -12,18 +13,22 @@ import { AddTaskComponent } from "./add-task/add-task.component";
   styleUrls: ["./tasks-page.component.scss"],
 })
 export class TasksPageComponent implements OnInit {
-  constructor(private tasksService: TasksService, public dialog: MatDialog) {}
+  constructor(
+    private tasksService: TasksService,
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar
+  ) {}
 
   tasks: Task[];
   users: User[];
   tasksUser: Task[];
   updateTask: Task;
   taskPatch: Task;
-  message: string;
   TasksUserId: number;
   isSelected: boolean;
 
   title: string;
+  durationInSeconds = 3;
 
   ngOnInit() {
     this.fetchAllTasks();
@@ -55,18 +60,15 @@ export class TasksPageComponent implements OnInit {
 
       this.tasksUser.splice(index, 1);
 
-      this.message = "Tarefa deletada com sucesso.";
-
-      setTimeout(() => {
-        this.message = null;
-      }, 3000);
-
-      console.log(this.message);
+      this._snackBar.openFromComponent(DeleteTaskComponent, {
+        duration: this.durationInSeconds * 1000,
+      });
     });
   }
 
   openDialog() {
     const dialogRef = this.dialog.open(AddTaskComponent, {
+      width: "38rem",
       data: { title: this.title },
     });
 

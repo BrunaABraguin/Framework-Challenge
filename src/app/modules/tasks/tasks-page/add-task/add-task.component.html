@@ -1,5 +1,6 @@
-<form #createTask="ngForm">
-  <mat-form-field>
+<h1 mat-dialog-title>Adicione uma tarefa</h1>
+<section mat-dialog-content>
+  <mat-form-field appearance="fill">
     <input
       matInput
       type="text"
@@ -8,7 +9,14 @@
       [(ngModel)]="data.title"
     />
   </mat-form-field>
-  <button type="submit" mat-button [mat-dialog-close]="data.title">
-    Submit
+</section>
+<div mat-dialog-actions>
+  <button
+    type="submit"
+    mat-flat-button
+    color="primary"
+    [mat-dialog-close]="data.title"
+  >
+    Salvar
   </button>
-</form>
+</div>
