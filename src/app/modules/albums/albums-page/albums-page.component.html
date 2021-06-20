@@ -1,0 +1,54 @@
+<table>
+  <thead>
+    <tr>
+      <th>User ID</th>
+      <th>ID</th>
+      <th>Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let album of albums">
+      <td>{{album.userId}}</td>
+      <td>{{album.id}}</td>
+      <td>{{album.title}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<select [(ngModel)]="AlbumUserId" (ngModelChange)='onUserSelected($event)'>
+  <option *ngFor="let album of albums" [value]="album.userId">
+    {{album.userId}}
+  </option>
+</select>
+
+<p>Usuário selecionado: {{AlbumUserId}}</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>User ID</th>
+      <th>ID</th>
+      <th>Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let album of albumsUser">
+      <td>{{album.userId}}</td>
+      <td>{{album.id}}</td>
+      <td>{{album.title}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>id: {{addAlbum?.id}}</p>
+<p>user ID: {{addAlbum?.userId}}</p>
+<p>title: {{addAlbum?.title}}</p>
+
+<p>id: {{updateAlbum?.id}}</p>
+<p>user ID: {{updateAlbum?.userId}}</p>
+<p>title: {{updateAlbum?.title}}</p>
+
+<p>id: {{albumPatch?.id}}</p>
+<p>title: {{albumPatch?.title}}</p>
+
+<p>{{message}}</p>
