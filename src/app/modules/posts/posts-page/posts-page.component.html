@@ -1,4 +1,4 @@
-<table>
+<!-- <table>
   <thead>
     <tr>
       <th>User ID</th>
@@ -15,7 +15,7 @@
       <td>{{ post.body }}</td>
     </tr>
   </tbody>
-</table>
+</table> -->
 
 <select [(ngModel)]="PostsUserId" (ngModelChange)="onUserSelected($event)">
   <option *ngFor="let post of posts" [value]="post.userId">
@@ -42,7 +42,7 @@
   </tbody>
 </table>
 
-<p>id: {{ addPost?.id }}</p>
+<!-- <p>id: {{ addPost?.id }}</p>
 <p>user ID: {{ addPost?.userId }}</p>
 <p>title: {{ addPost?.title }}</p>
 <p>body: {{ addPost?.body }}</p>
@@ -55,4 +55,4 @@
 <p>id: {{ postPatch?.id }}</p>
 <p>title: {{ postPatch?.title }}</p>
 
-<p>{{ message }}</p>
+<p>{{ message }}</p> -->

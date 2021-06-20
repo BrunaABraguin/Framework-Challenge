@@ -1,4 +1,4 @@
-<table>
+<!-- <table>
   <thead>
     <tr>
       <th>User ID</th>
@@ -13,7 +13,7 @@
       <td>{{album.title}}</td>
     </tr>
   </tbody>
-</table>
+</table> -->
 
 <select [(ngModel)]="AlbumsUserId" (ngModelChange)='onUserSelected($event)'>
   <option *ngFor="let album of albums" [value]="album.userId">
@@ -40,7 +40,7 @@
   </tbody>
 </table>
 
-<p>id: {{addAlbum?.id}}</p>
+<!-- <p>id: {{addAlbum?.id}}</p>
 <p>user ID: {{addAlbum?.userId}}</p>
 <p>title: {{addAlbum?.title}}</p>
 
@@ -51,4 +51,4 @@
 <p>id: {{albumPatch?.id}}</p>
 <p>title: {{albumPatch?.title}}</p>
 
-<p>{{message}}</p>
+<p>{{message}}</p> -->
