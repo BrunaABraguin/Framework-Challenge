@@ -1,34 +1,38 @@
-<mat-form-field appearance="fill">
-  <mat-label>Selecione uma Lista de Tarefas</mat-label>
-  <mat-select
-    [(ngModel)]="TasksUserId"
-    (ngModelChange)="onUserSelected($event)"
+<h1>Lista de tarefas</h1>
+<main>
+  <section class="container">
+    <mat-form-field appearance="fill">
+      <mat-label>Selecione uma Lista de Tarefas</mat-label>
+      <mat-select
+        [(ngModel)]="TasksUserId"
+        (ngModelChange)="onUserSelected($event)"
+      >
+        <mat-option *ngFor="let user of users" [value]="user.id">{{
+          user.name
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </section>
+
+  <mat-list
+    [ngClass]="{
+      hidden: !isSelected,
+      visible: isSelected
+    }"
   >
-    <mat-option *ngFor="let user of users" [value]="user.id">{{
-      user.name
-    }}</mat-option>
-  </mat-select>
-</mat-form-field>
+    <mat-card>
+      <mat-checkbox *ngFor="let task of tasksUser" [(ngModel)]="task.completed"
+        >{{ task.title }}
+        <button mat-raised-button color="warn" (click)="deleteATask(task)">
+          <mat-icon>delete</mat-icon>
+        </button>
 
-<mat-list
-  [ngClass]="{
-    hidden: !isSelected,
-    visible: isSelected
-  }"
->
-  <mat-card>
-    <mat-checkbox *ngFor="let task of tasksUser" [(ngModel)]="task.completed"
-      >{{ task.title }}
-      <button mat-raised-button color="warn" (click)="deleteATask(task)">
-        <mat-icon>delete</mat-icon>
-      </button>
+        <mat-divider></mat-divider>
+      </mat-checkbox>
+    </mat-card>
+  </mat-list>
 
-      <mat-divider></mat-divider>
-    </mat-checkbox>
-  </mat-card>
-</mat-list>
-
-<!-- <p>id: {{addTask?.id}}</p>
+  <!-- <p>id: {{addTask?.id}}</p>
 <p>user ID: {{addTask?.userId}}</p>
 <p>title: {{addTask?.title}}</p>
 
@@ -37,3 +41,4 @@
 <p>title: {{updateTask?.title}}</p>
 
 <p>{{message}}</p> -->
+</main>

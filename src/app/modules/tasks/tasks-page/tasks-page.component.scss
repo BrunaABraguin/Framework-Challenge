@@ -6,4 +6,18 @@
       text-decoration: line-through;
     }
   }
+
+  &-card {
+    width: 50%;
+    margin: 2rem auto;
+  }
+
+  &-form-field {
+    width: 50%;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
 }
