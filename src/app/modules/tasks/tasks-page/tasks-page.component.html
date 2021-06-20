@@ -20,6 +20,17 @@
       visible: isSelected
     }"
   >
+    <button
+      mat-fab
+      color="primary"
+      [ngClass]="{
+        hidden: !isSelected,
+        visible: isSelected
+      }"
+      class="add-task"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
     <mat-card>
       <mat-checkbox *ngFor="let task of tasksUser" [(ngModel)]="task.completed"
         >{{ task.title }}
