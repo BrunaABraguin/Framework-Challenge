@@ -26,8 +26,7 @@
   margin-top: 2rem;
 }
 
-button.mat-menu-trigger.mat-icon-button.mat-button-base
-{
+button.mat-menu-trigger.mat-icon-button.mat-button-base {
   position: absolute;
   right: 2.25rem;
   vertical-align: middle;
@@ -35,4 +34,10 @@ button.mat-menu-trigger.mat-icon-button.mat-button-base
   .more-icon {
     margin-bottom: 2.1875rem;
   }
+}
+
+.add-task {
+  position: fixed;
+  right: 18rem;
+  bottom: 6rem;
 }
