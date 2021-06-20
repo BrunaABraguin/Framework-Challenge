@@ -10,14 +10,23 @@
   </mat-select>
 </mat-form-field>
 
-<section>
-  <mat-checkbox
-    *ngFor="let task of tasksUser"
-    [(ngModel)]="task.completed"
-    (click)="deleteATask(task)"
-    >{{ task.title }}
-  </mat-checkbox>
-</section>
+<mat-list
+  [ngClass]="{
+    hidden: !isSelected,
+    visible: isSelected
+  }"
+>
+  <mat-card>
+    <mat-checkbox *ngFor="let task of tasksUser" [(ngModel)]="task.completed"
+      >{{ task.title }}
+      <button mat-raised-button color="warn" (click)="deleteATask(task)">
+        <mat-icon>delete</mat-icon>
+      </button>
+
+      <mat-divider></mat-divider>
+    </mat-checkbox>
+  </mat-card>
+</mat-list>
 
 <!-- <p>id: {{addTask?.id}}</p>
 <p>user ID: {{addTask?.userId}}</p>

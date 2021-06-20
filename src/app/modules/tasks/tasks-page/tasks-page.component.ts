@@ -19,6 +19,7 @@ export class TasksPageComponent implements OnInit {
   taskPatch: Task;
   message: string;
   TasksUserId: number;
+  isSelected: boolean;
 
   ngOnInit() {
     this.fetchAllTasks();
@@ -39,7 +40,9 @@ export class TasksPageComponent implements OnInit {
       this.tasks = data;
     });
   }
+
   onUserSelected(tasksUserId: any) {
+    this.isSelected = true;
     this.tasksService.getTasksByUser(tasksUserId).subscribe((data) => {
       this.tasksUser = data;
     });

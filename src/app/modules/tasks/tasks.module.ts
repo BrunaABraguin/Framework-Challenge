@@ -4,8 +4,15 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { TasksPageComponent } from "./tasks-page/tasks-page.component";
 import { HttpClientModule } from "@angular/common/http";
-import { MatSelectModule } from "@angular/material/select";
-import { MatCheckboxModule } from "@angular/material/checkbox";
+import {
+  MatCheckboxModule,
+  MatIconModule,
+  MatSelectModule,
+  MatButtonModule,
+  MatCardModule,
+  MatDividerModule,
+  MatListModule,
+} from "@angular/material";
 
 @NgModule({
   declarations: [TasksPageComponent],
@@ -15,6 +22,11 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     FormsModule,
     MatSelectModule,
     MatCheckboxModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatDividerModule,
+    MatListModule,
   ],
   providers: [TasksService],
 })

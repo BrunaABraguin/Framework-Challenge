@@ -1,5 +1,9 @@
 .mat {
   &-checkbox {
     display: block;
+
+    &-checked {
+      text-decoration: line-through;
+    }
   }
 }
