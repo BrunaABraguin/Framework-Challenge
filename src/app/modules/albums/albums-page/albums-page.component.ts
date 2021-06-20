@@ -1,6 +1,7 @@
 import { AlbumsService } from "./../albums.service";
 import { Component, OnInit } from "@angular/core";
 import { Album } from "src/app/shared/models/album";
+import { User } from "src/app/shared/models/user";
 
 @Component({
   selector: "app-albums-page",
@@ -10,6 +11,8 @@ import { Album } from "src/app/shared/models/album";
 export class AlbumsPageComponent implements OnInit {
   constructor(private albumsService: AlbumsService) {}
   albums: Album[];
+
+  users: User[];
   albumsUser: Album[];
   addAlbum: Album;
   updateAlbum: Album;
@@ -20,6 +23,7 @@ export class AlbumsPageComponent implements OnInit {
 
   ngOnInit() {
     this.fetchAllAlbums();
+    this.fetchAllUsers();
 
     const albumAdd = new Album();
 
@@ -55,6 +59,12 @@ export class AlbumsPageComponent implements OnInit {
   fetchAllAlbums() {
     this.albumsService.getAlbums().subscribe((data) => {
       this.albums = data;
+    });
+  }
+
+  fetchAllUsers() {
+    this.albumsService.getUsersName().subscribe((data) => {
+      this.users = data;
     });
   }
 

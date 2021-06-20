@@ -1,6 +1,7 @@
 import { PostsService } from "./../posts.service";
 import { Component, OnInit } from "@angular/core";
 import Post from "src/app/shared/models/post";
+import { User } from 'src/app/shared/models/user';
 
 @Component({
   selector: "app-posts-page",
@@ -10,6 +11,9 @@ import Post from "src/app/shared/models/post";
 export class PostsPageComponent implements OnInit {
   constructor(private postsService: PostsService) {}
   posts: Post[];
+
+  users: User[];
+
   postsUser: Post[];
   addPost: Post;
   updatePost: Post;
@@ -20,6 +24,7 @@ export class PostsPageComponent implements OnInit {
 
   ngOnInit() {
     this.fetchAllPosts();
+    this.fetchAllUsers();
 
     const postAdd = new Post();
 
@@ -57,6 +62,12 @@ export class PostsPageComponent implements OnInit {
   fetchAllPosts() {
     this.postsService.getPosts().subscribe((data) => {
       this.posts = data;
+    });
+  }
+
+  fetchAllUsers() {
+    this.postsService.getUsersName().subscribe((data) => {
+      this.users = data;
     });
   }
   onUserSelected(postsUserId: any): void {

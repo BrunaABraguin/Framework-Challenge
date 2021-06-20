@@ -23,10 +23,7 @@ export class TasksPageComponent implements OnInit {
 
   ngOnInit() {
     this.fetchAllTasks();
-
-    this.tasksService.getUsersName().subscribe((data) => {
-      this.users = data;
-    });
+    this.fetchAllUsers();
 
     const taskAdd = new Task();
 
@@ -59,6 +56,12 @@ export class TasksPageComponent implements OnInit {
   onUserSelected(tasksUserId: any): void {
     this.tasksService.getTasksByUser(tasksUserId).subscribe((data) => {
       this.tasksUser = data;
+    });
+  }
+
+  fetchAllUsers() {
+    this.tasksService.getUsersName().subscribe((data) => {
+      this.users = data;
     });
   }
 

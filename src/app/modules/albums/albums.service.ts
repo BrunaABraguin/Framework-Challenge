@@ -6,34 +6,37 @@ import { Album } from 'src/app/shared/models/album';
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class AlbumsService {
-
-  constructor(private httpclient: HttpClient) { }
+  constructor(private httpclient: HttpClient) {}
 
   getAlbums(): Observable<any> {
-    return this.httpclient.get(API.API_URL + '/albums');
+    return this.httpclient.get(API.API_URL + "/albums");
+  }
+
+  getUsersName(): Observable<any> {
+    return this.httpclient.get(API.API_URL + "/users");
   }
 
   getAlbumByUser(albumsUserId: string): Observable<any> {
-    const param = new HttpParams().set('userId', albumsUserId);
-    return this.httpclient.get(API.API_URL + '/albums', { params: param });
+    const param = new HttpParams().set("userId", albumsUserId);
+    return this.httpclient.get(API.API_URL + "/albums", { params: param });
   }
 
   addAlbum(albumAdd: Album): Observable<any> {
-    return this.httpclient.post(API.API_URL + '/albums', albumAdd);
+    return this.httpclient.post(API.API_URL + "/albums", albumAdd);
   }
 
   updateAlbum(albumUpdate: Album): Observable<any> {
-    return this.httpclient.put(API.API_URL + '/albums/1', albumUpdate);
+    return this.httpclient.put(API.API_URL + "/albums/1", albumUpdate);
   }
 
   patchAlbum(albumPatch: Album): Observable<any> {
-    return this.httpclient.put(API.API_URL + '/todos/1', albumPatch);
+    return this.httpclient.put(API.API_URL + "/todos/1", albumPatch);
   }
 
   deleteAlbum(): Observable<any> {
-    return this.httpclient.delete(API.API_URL + '/todos/1');
+    return this.httpclient.delete(API.API_URL + "/todos/1");
   }
 }
