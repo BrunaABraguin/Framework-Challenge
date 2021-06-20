@@ -10,14 +10,13 @@ import { User } from "src/app/shared/models/user";
 })
 export class PostsPageComponent implements OnInit {
   constructor(private postsService: PostsService) {}
-  posts: Post[];
+  posts: Post[] = [];
 
   users: User[];
 
   postsUser: Post[];
   addPost: Post;
   updatePost: Post;
-  postPatch: Post;
   message: string;
 
   PostsUserId: number;
@@ -25,28 +24,6 @@ export class PostsPageComponent implements OnInit {
   ngOnInit() {
     this.fetchAllPosts();
     this.fetchAllUsers();
-
-    const postUpdate = new Post();
-
-    postUpdate.body = "something new in here";
-    postUpdate.title = "A new title";
-    postUpdate.userId = 1;
-
-    this.postsService.updatePost(postUpdate).subscribe((data) => {
-      this.updatePost = data;
-    });
-
-    const postPatch = new Post();
-
-    postPatch.title = "A newer title";
-
-    this.postsService.patchPost(postPatch).subscribe((data) => {
-      this.postPatch = data;
-    });
-
-    this.postsService.deletePost().subscribe((data) => {
-      this.message = "Postagem deletada com sucesso.";
-    });
   }
 
   fetchAllPosts() {
@@ -76,7 +53,25 @@ export class PostsPageComponent implements OnInit {
     postAdd.userId = 1;
 
     this.postsService.addPost(postAdd).subscribe((data) => {
-      this.addPost = data;
+      this.postsUser.splice(0, 0, post);
+    });
+  }
+
+  updateAPost(post) {
+    this.postsService.patchPost(post.id).subscribe((data) => {
+      console.log(this.updatePost);
+      this.updatePost = data;
+    });
+  }
+
+  deletePost(post) {
+    this.postsService.deletePost(post.id).subscribe(() => {
+      const index = this.postsUser.indexOf(post);
+      this.postsUser.splice(index, 1);
+
+      this.message = "Postagem deletada com sucesso.";
+
+      console.log(this.message);
     });
   }
 }

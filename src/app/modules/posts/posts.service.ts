@@ -27,15 +27,17 @@ export class PostsService {
     return this.httpclient.post(API.API_URL + "/posts", postAdd);
   }
 
-  updatePost(postUpdate: Post): Observable<any> {
-    return this.httpclient.put(API.API_URL + "/posts/1", postUpdate);
+  patchPost(post: string): Observable<any> {
+    const param = new HttpParams().set("id", post);
+
+    return this.httpclient.patch(
+      API.API_URL + "/posts/" + { params: param },
+      JSON.stringify({ isRead: true })
+    );
   }
 
-  patchPost(postPatch: Post): Observable<any> {
-    return this.httpclient.put(API.API_URL + "/posts/1", postPatch);
-  }
-
-  deletePost(): Observable<any> {
-    return this.httpclient.delete(API.API_URL + "/posts/1");
+  deletePost(post: string): Observable<any> {
+    const param = new HttpParams().set("id", post);
+    return this.httpclient.delete(API.API_URL + "/posts/" + { params: param });
   }
 }

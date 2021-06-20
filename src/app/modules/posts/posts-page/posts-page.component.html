@@ -1,43 +1,49 @@
+<h2>Postagens</h2>
 <form #createPost="ngForm" (ngSubmit)="onSubmitCreate(createPost.value)">
   <input type="text" name="title" id="title" ngModel />
   <input type="text" name="body" id="body" ngModel />
 
   <button type="submit">Submit</button>
 </form>
+<button mat-fab color="primary">
+  <mat-icon>add</mat-icon>
+</button>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title> <mat-icon>account_circle</mat-icon> </mat-panel-title>
+    <mat-panel-description> Selecione as postagens </mat-panel-description>
+  </mat-expansion-panel-header>
 
-<mat-form-field appearance="fill">
-  <mat-label>Selecione as Postagens</mat-label>
-  <mat-select
-    [(ngModel)]="PostsUserId"
-    (ngModelChange)="onUserSelected($event)"
-  >
-    <mat-option *ngFor="let user of users" [value]="user.id">{{
-      user.name
-    }}</mat-option>
-  </mat-select>
-</mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-select
+      [(ngModel)]="PostsUserId"
+      (ngModelChange)="onUserSelected($event)"
+    >
+      <mat-option *ngFor="let user of users" [value]="user.id">{{
+        user.name
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-expansion-panel>
 
-<table>
-  <thead>
-    <tr>
-      <th>User ID</th>
-      <th>ID</th>
-      <th>Title</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let post of postsUser">
-      <td>{{ post.userId }}</td>
-      <td>{{ post.id }}</td>
-      <td>{{ post.title }}</td>
-    </tr>
-  </tbody>
-</table>
+<mat-list>
+  <mat-card *ngFor="let post of postsUser">
+    <mat-card-title>{{ post.title }}</mat-card-title>
+    <mat-card-content> {{ post.body }}</mat-card-content>
+    <button mat-mini-fab color="warn" (click)="deletePost(post)">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button mat-mini-fab color="accent" (click)="updateAPost(post)">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <mat-divider></mat-divider>
+  </mat-card>
+</mat-list>
 
-<p>id: {{ addPost?.id }}</p>
+<!-- <p>id: {{ addPost?.id }}</p>
 <p>user ID: {{ addPost?.userId }}</p>
 <p>title: {{ addPost?.title }}</p>
-<p>body: {{ addPost?.body }}</p>
+<p>body: {{ addPost?.body }}</p> -->
 
 <!--
 
