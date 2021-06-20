@@ -5,7 +5,14 @@
 
   <button type="submit">Submit</button>
 </form>
-<button mat-fab color="primary">
+<button
+  mat-fab
+  color="primary"
+  [ngClass]="{
+    hidden: !isSelected,
+    visible: isSelected
+  }"
+>
   <mat-icon>add</mat-icon>
 </button>
 <mat-expansion-panel>

@@ -20,6 +20,7 @@ export class PostsPageComponent implements OnInit {
   message: string;
 
   PostsUserId: number;
+  isSelected: boolean;
 
   ngOnInit() {
     this.fetchAllPosts();
@@ -37,7 +38,10 @@ export class PostsPageComponent implements OnInit {
       this.users = data;
     });
   }
-  onUserSelected(postsUserId: any): void {
+
+  onUserSelected(postsUserId: any) {
+    this.isSelected = true;
+
     this.postsService.getPostsByUser(postsUserId).subscribe((data) => {
       this.postsUser = data;
     });

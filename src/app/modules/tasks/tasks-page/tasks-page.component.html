@@ -14,7 +14,7 @@
   <mat-checkbox
     *ngFor="let task of tasksUser"
     [(ngModel)]="task.completed"
-    (click)="changeStatus(task)"
+    (click)="deleteATask(task)"
     >{{ task.title }}
   </mat-checkbox>
 </section>

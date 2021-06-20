@@ -68,7 +68,7 @@ export class AlbumsPageComponent implements OnInit {
     });
   }
 
-  onUserSelected(albumUserId: any): void {
+  onUserSelected(albumUserId: any) {
     this.albumsService.getAlbumByUser(albumUserId).subscribe((data) => {
       this.albumsUser = data;
     });
