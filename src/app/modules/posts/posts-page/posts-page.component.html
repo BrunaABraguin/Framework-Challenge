@@ -1,3 +1,10 @@
+<form #createPost="ngForm" (ngSubmit)="onSubmitCreate(createPost.value)">
+  <input type="text" name="title" id="title" ngModel />
+  <input type="text" name="body" id="body" ngModel />
+
+  <button type="submit">Submit</button>
+</form>
+
 <mat-form-field appearance="fill">
   <mat-label>Selecione as Postagens</mat-label>
   <mat-select
@@ -27,10 +34,12 @@
   </tbody>
 </table>
 
-<!-- <p>id: {{ addPost?.id }}</p>
+<p>id: {{ addPost?.id }}</p>
 <p>user ID: {{ addPost?.userId }}</p>
 <p>title: {{ addPost?.title }}</p>
 <p>body: {{ addPost?.body }}</p>
+
+<!--
 
 <p>id: {{ updatePost?.id }}</p>
 <p>user ID: {{ updatePost?.userId }}</p>
