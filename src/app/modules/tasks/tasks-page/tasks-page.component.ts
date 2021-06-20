@@ -10,6 +10,7 @@ import { Task } from "src/app/shared/models/task";
 })
 export class TasksPageComponent implements OnInit {
   constructor(private tasksService: TasksService) {}
+
   tasks: Task[];
   users: User[];
   tasksUser: Task[];
@@ -21,9 +22,7 @@ export class TasksPageComponent implements OnInit {
   TasksUserId: number;
 
   ngOnInit() {
-    this.tasksService.getTasks().subscribe((data) => {
-      this.tasks = data;
-    });
+    this.fetchAllTasks();
 
     this.tasksService.getUsersName().subscribe((data) => {
       this.users = data;
@@ -47,6 +46,23 @@ export class TasksPageComponent implements OnInit {
       this.updateTask = data;
     });
 
+    this.tasksService.deleteTask().subscribe((data) => {
+      this.message = "Tarefa deletada com sucesso.";
+    });
+  }
+
+  fetchAllTasks(): void {
+    this.tasksService.getTasks().subscribe((data) => {
+      this.tasks = data;
+    });
+  }
+  onUserSelected(tasksUserId: any): void {
+    this.tasksService.getTasksByUser(tasksUserId).subscribe((data) => {
+      this.tasksUser = data;
+    });
+  }
+
+  changeStatus(task: Task): void {
     const taskPatch = new Task();
 
     taskPatch.title = "A newer title";
@@ -55,14 +71,6 @@ export class TasksPageComponent implements OnInit {
       this.taskPatch = data;
     });
 
-    this.tasksService.deleteTask().subscribe((data) => {
-      this.message = "Tarefa deletada com sucesso.";
-    });
-  }
-
-  onUserSelected(tasksUserId: any): void {
-    this.tasksService.getTasksByUser(tasksUserId).subscribe((data) => {
-      this.tasksUser = data;
-    });
+    console.log("change");
   }
 }

@@ -9,9 +9,13 @@
   >
     <mat-toolbar>Framework</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLinkActive="active" routerLink="posts">Postagens</a>
+      <a mat-list-item routerLinkActive="active" routerLink="posts"
+        >Postagens</a
+      >
       <a mat-list-item routerLinkActive="active" routerLink="albums">Álbuns</a>
-      <a mat-list-item routerLinkActive="active" routerLink="tasks">Lista de Tarefas</a>
+      <a mat-list-item routerLinkActive="active" routerLink="tasks"
+        >Lista de Tarefas</a
+      >
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -25,8 +29,10 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Challenge Angular</span>
+      <span>{{ title }}</span>
     </mat-toolbar>
-    <router-outlet></router-outlet>
+    <main class="container">
+      <router-outlet></router-outlet>
+    </main>
   </mat-sidenav-content>
 </mat-sidenav-container>

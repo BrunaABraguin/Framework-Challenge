@@ -2,8 +2,12 @@
   height: 100%;
 }
 
+.container {
+  margin: 3.75rem 7.5rem;
+}
+
 .sidenav {
-  width: 200px;
+  width: 12.5rem;
 
   .mat-toolbar {
     background-color: var(--dark-primary-color);

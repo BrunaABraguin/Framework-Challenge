@@ -1,47 +1,23 @@
-<!-- <table>
-  <thead>
-    <tr>
-      <th>User ID</th>
-      <th>ID</th>
-      <th>Title</th>
-      <th>Complete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let task of tasks">
-      <td>{{ task.userId }}</td>
-      <td>{{task.id}}</td>
-      <td>{{task.title}}</td>
-      <td>{{task.completed}}</td>
-    </tr>
-  </tbody>
-</table> -->
-
 <mat-form-field appearance="fill">
-  <mat-label>Lista de Tarefas de:</mat-label>
-  <mat-select [(ngModel)]="TasksUserId" (ngModelChange)='onUserSelected($event)'>
-    <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}}</mat-option>
+  <mat-label>Escolha uma Lista de Tarefas</mat-label>
+  <mat-select
+    [(ngModel)]="TasksUserId"
+    (ngModelChange)="onUserSelected($event)"
+  >
+    <mat-option *ngFor="let user of users" [value]="user.id">{{
+      user.name
+    }}</mat-option>
   </mat-select>
 </mat-form-field>
 
-<p>Usuário selecionado: {{TasksUserId}}</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>User ID</th>
-      <th>ID</th>
-      <th>Title</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let task of tasksUser">
-      <td>{{ task.userId}}</td>
-      <td>{{ task.id}}</td>
-      <td>{{ task.title}}</td>
-    </tr>
-  </tbody>
-</table>
+<section>
+  <mat-checkbox
+    *ngFor="let task of tasksUser"
+    [(ngModel)]="task.completed"
+    (click)="changeStatus(task)"
+    >{{ task.id }} - {{ task.title }}
+  </mat-checkbox>
+</section>
 
 <!-- <p>id: {{addTask?.id}}</p>
 <p>user ID: {{addTask?.userId}}</p>
@@ -51,7 +27,7 @@
 <p>user ID: {{updateTask?.userId}}</p>
 <p>title: {{updateTask?.title}}</p>
 
+<p>{{message}}</p> -->
+
 <p>id: {{taskPatch?.id}}</p>
 <p>title: {{taskPatch?.title}}</p>
-
-<p>{{message}}</p> -->
