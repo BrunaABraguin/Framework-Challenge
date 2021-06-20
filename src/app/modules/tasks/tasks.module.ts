@@ -13,10 +13,12 @@ import {
   MatDividerModule,
   MatListModule,
   MatMenuModule,
+  MatDialogModule,
 } from "@angular/material";
+import { AddTaskComponent } from "./tasks-page/add-task/add-task.component";
 
 @NgModule({
-  declarations: [TasksPageComponent],
+  declarations: [TasksPageComponent, AddTaskComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -29,7 +31,9 @@ import {
     MatDividerModule,
     MatListModule,
     MatMenuModule,
+    MatDialogModule,
   ],
   providers: [TasksService],
+  entryComponents: [AddTaskComponent],
 })
 export class TasksModule {}

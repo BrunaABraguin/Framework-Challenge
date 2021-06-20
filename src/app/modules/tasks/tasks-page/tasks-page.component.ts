@@ -2,6 +2,9 @@ import { User } from "./../../../shared/models/user";
 import { TasksService } from "./../tasks.service";
 import { Component, OnInit } from "@angular/core";
 import { Task } from "src/app/shared/models/task";
+import { MatDialog } from "@angular/material";
+
+import { AddTaskComponent } from './add-task/add-task.component';
 
 @Component({
   selector: "app-tasks-page",
@@ -9,7 +12,7 @@ import { Task } from "src/app/shared/models/task";
   styleUrls: ["./tasks-page.component.scss"],
 })
 export class TasksPageComponent implements OnInit {
-  constructor(private tasksService: TasksService) {}
+  constructor(private tasksService: TasksService, public dialog: MatDialog) {}
 
   tasks: Task[];
   users: User[];
@@ -64,5 +67,9 @@ export class TasksPageComponent implements OnInit {
 
       console.log(this.message);
     });
+  }
+
+  openDialog() {
+    this.dialog.open(AddTaskComponent);
   }
 }
