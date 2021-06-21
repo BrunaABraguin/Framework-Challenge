@@ -14,9 +14,10 @@ import {
   MatCardModule,
   MatButtonModule,
 } from "@angular/material";
+import { AddPostComponent } from './posts-page/add-post/add-post.component';
 
 @NgModule({
-  declarations: [PostsPageComponent],
+  declarations: [PostsPageComponent, AddPostComponent],
   imports: [
     CommonModule,
     HttpClientModule,

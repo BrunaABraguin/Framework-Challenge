@@ -1,0 +1,28 @@
+.add-post {
+  position: fixed;
+  right: 18rem;
+  bottom: 6rem;
+  z-index: 10;
+
+  @media (max-width: 1024px) {
+    right: 4rem;
+    bottom: 2.2rem;
+  }
+
+  @media (max-width: 780px) {
+    right: 3.5rem;
+    bottom: 2.2rem;
+  }
+
+  @media (max-width: 426px) {
+    right: 2rem;
+    bottom: 0rem;
+  }
+}
+
+.section-panel{
+  margin: 1.5rem auto;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
