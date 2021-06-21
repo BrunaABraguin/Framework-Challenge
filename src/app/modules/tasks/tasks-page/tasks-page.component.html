@@ -34,7 +34,8 @@
     </button>
     <mat-card>
       <mat-checkbox *ngFor="let task of tasksUser" [(ngModel)]="task.completed"
-        >{{ task.title }}
+        >
+        <span class="checkbox-title">{{ task.title }}</span>
         <button mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon class="more-icon">more_vert</mat-icon>
         </button>

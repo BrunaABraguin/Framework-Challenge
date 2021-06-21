@@ -28,7 +28,6 @@ body {
   &-checkbox-inner-container {
     margin-right: 20px !important;
   }
-
 }
 
 .hidden {
@@ -37,4 +36,21 @@ body {
 
 .visible {
   visibility: visible;
+}
+
+.mat-checkbox-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media (min-width: 1025px) {
+    max-width: 45rem;
+  }
+
+  @media (max-width: 1024px) {
+    max-width: 23rem;
+  }
+
+  @media (max-width: 426px) {
+    max-width: 12rem;
+  }
 }
