@@ -12,6 +12,7 @@ import {
   MatCardModule,
   MatButtonModule,
   MatMenuModule,
+  MatDialogModule,
 } from "@angular/material";
 import { AddPostComponent } from "./posts-page/add-post/add-post.component";
 
@@ -28,7 +29,9 @@ import { AddPostComponent } from "./posts-page/add-post/add-post.component";
     MatCardModule,
     MatButtonModule,
     MatMenuModule,
+    MatDialogModule,
   ],
   providers: [PostsService],
+  entryComponents: [AddPostComponent],
 })
 export class PostsModule {}

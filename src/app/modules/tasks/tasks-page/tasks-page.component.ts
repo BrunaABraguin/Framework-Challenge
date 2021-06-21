@@ -22,11 +22,9 @@ export class TasksPageComponent implements OnInit {
   tasks: Task[];
   users: User[];
   tasksUser: Task[];
-  updateTask: Task;
-  taskPatch: Task;
   TasksUserId: number;
-  isSelected: boolean;
 
+  isSelected: boolean;
   title: string;
   durationInSeconds = 3;
 
@@ -74,6 +72,8 @@ export class TasksPageComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       const taskAdd = new Task();
+
+      console.log(result);
 
       if (result != null) {
         taskAdd.title = result;

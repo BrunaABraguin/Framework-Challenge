@@ -1,6 +1,22 @@
-<form #createPost="ngForm">
-  <input type="text" name="title" id="title" ngModel />
-  <input type="text" name="body" id="body" ngModel />
-
-  <button type="submit">Submit</button>
-</form>
+<h1 mat-dialog-title>Adicione uma postagem</h1>
+<section mat-dialog-content>
+  <input
+    class="input-title"
+    type="text"
+    name="title"
+    id="title"
+    [(ngModel)]="data.title"
+  />
+  <textarea name="title" id="title" [(ngModel)]="data.body"> </textarea>
+</section>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button
+    type="submit"
+    mat-flat-button
+    color="primary"
+    [mat-dialog-close]="[data.title, data.body]"
+  >
+    Salvar
+  </button>
+</div>

@@ -1,12 +1,4 @@
-<button
-  mat-fab
-  color="primary"
-  class="add-post"
-  [ngClass]="{
-    hidden: !isSelected,
-    visible: isSelected
-  }"
->
+<button mat-fab color="primary" class="add-post" (click)="openDialog()">
   <mat-icon>add</mat-icon>
 </button>
 
@@ -15,9 +7,7 @@
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title> <mat-icon>account_circle</mat-icon> </mat-panel-title>
-      <mat-panel-description>
-        Autores</mat-panel-description
-      >
+      <mat-panel-description> Autores</mat-panel-description>
     </mat-expansion-panel-header>
 
     <mat-form-field appearance="fill">
