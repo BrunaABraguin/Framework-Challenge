@@ -6,6 +6,7 @@ import { MatDialog, MatSnackBar } from "@angular/material";
 
 import { AddTaskComponent } from "./add-task/add-task.component";
 import { DeleteTaskComponent } from "./delete-task/delete-task.component";
+import { UncompletedComponent } from 'src/app/shared/uncompleted/uncompleted.component';
 
 @Component({
   selector: "app-tasks-page",
@@ -73,12 +74,16 @@ export class TasksPageComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       const taskAdd = new Task();
 
-      if (result != null) {
+      if (result != null || (result = "")) {
         taskAdd.title = result;
         taskAdd.userId = 1;
         taskAdd.completed = false;
 
         this.tasksUser.splice(0, 0, taskAdd);
+      } else {
+        this._snackBar.openFromComponent(UncompletedComponent, {
+          duration: this.durationInSeconds * 1000,
+        });
       }
     });
   }
