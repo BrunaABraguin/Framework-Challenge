@@ -29,7 +29,7 @@
     <mat-card-title>{{ post.title }}</mat-card-title>
     <mat-card-content> {{ post.body }}</mat-card-content>
     <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon class="more-icon">more_vert</mat-icon>
+      <mat-icon class="more-icon">more_horiz</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="deleteAPost(post)">
@@ -50,7 +50,7 @@
     <mat-card-title>{{ post.title }}</mat-card-title>
     <mat-card-content> {{ post.body }}</mat-card-content>
     <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon class="more-icon">more_vert</mat-icon>
+      <mat-icon class="more-icon">more_horiz</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="deleteAPost(post)">

@@ -1,31 +1,55 @@
 <section class="section-panel">
   <h2>Álbuns</h2>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title> <mat-icon>account_circle</mat-icon> </mat-panel-title>
-      <mat-panel-description> Autores</mat-panel-description>
-    </mat-expansion-panel-header>
+  <div>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> <mat-icon>account_circle</mat-icon> </mat-panel-title>
+        <mat-panel-description> Artistas</mat-panel-description>
+      </mat-expansion-panel-header>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Autores</mat-label>
-      <mat-select
-        [(ngModel)]="AlbumsUserId"
-        (ngModelChange)="onUserSelected($event)"
-      >
-        <mat-option *ngFor="let user of users" [value]="user.id">{{
-          user.name
-        }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </mat-expansion-panel>
+      <mat-form-field appearance="fill">
+        <mat-label>Artista</mat-label>
+        <mat-select
+          [(ngModel)]="AlbumsUserId"
+          (ngModelChange)="onUserSelected($event)"
+        >
+          <mat-option *ngFor="let user of users" [value]="user.id">{{
+            user.name
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> <mat-icon>photo_library</mat-icon> </mat-panel-title>
+        <mat-panel-description> Álbuns</mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Álbum</mat-label>
+        <mat-select
+          [(ngModel)]="AlbumId"
+          (ngModelChange)="onAlbumSelected($event)"
+        >
+          <mat-option *ngFor="let album of albums" [value]="album.id">{{
+            album.title
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-expansion-panel>
+  </div>
 </section>
 
 <table>
   <tbody>
     <tr *ngFor="let album of albumsUser">
-      <td>{{ album.userId }}</td>
-      <td>{{ album.id }}</td>
       <td>{{ album.title }}</td>
+      <!-- <td *ngFor="let photo of photosAlbum">
+        <div *ngIf="photo.albumId === album.id">
+          <img src="{{ photo.thumbnailUrl }}" />
+        </div>
+      </td> -->
     </tr>
   </tbody>
 </table>
