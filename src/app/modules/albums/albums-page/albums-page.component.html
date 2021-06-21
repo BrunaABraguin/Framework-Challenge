@@ -1,5 +1,5 @@
 <section class="section-panel">
-  <h2>Álbuns</h2>
+  <h2>{{ filterSelected }}</h2>
   <div class="filters">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
@@ -42,15 +42,19 @@
 </section>
 
 <mat-grid-list
+  class="album-layout"
   cols="5"
   [ngClass]="{
     hidden: isSelected,
     visible: !isSelected
   }"
 >
-  <mat-grid-tile *ngFor="let album of albumsUser">{{
-    album.title
-  }}</mat-grid-tile>
+  <mat-grid-tile *ngFor="let album of albumsUser">
+    <p class="album-name">
+      <mat-icon>photo_album</mat-icon>
+    </p>
+    <p>{{ album.title }}</p>
+  </mat-grid-tile>
 </mat-grid-list>
 
 <mat-grid-list

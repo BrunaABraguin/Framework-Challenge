@@ -10,6 +10,7 @@ import {
   MatExpansionModule,
   MatIconModule,
   MatGridListModule,
+  MatCardModule,
 } from "@angular/material";
 
 @NgModule({

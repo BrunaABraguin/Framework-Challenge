@@ -19,8 +19,13 @@ import {
   MatListModule,
 } from "@angular/material";
 import { UncompletedComponent } from "./shared/uncompleted/uncompleted.component";
+import { ErrorsComponent } from './shared/errors/errors.component';
 @NgModule({
-  declarations: [AppComponent, UncompletedComponent, UncompletedComponent],
+  declarations: [
+    AppComponent,
+    UncompletedComponent,
+    ErrorsComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -39,6 +44,6 @@ import { UncompletedComponent } from "./shared/uncompleted/uncompleted.component
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [UncompletedComponent],
+  entryComponents: [UncompletedComponent, ErrorsComponent],
 })
 export class AppModule {}
