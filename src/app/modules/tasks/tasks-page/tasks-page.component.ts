@@ -73,8 +73,6 @@ export class TasksPageComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       const taskAdd = new Task();
 
-      console.log(result);
-
       if (result != null) {
         taskAdd.title = result;
         taskAdd.userId = 1;

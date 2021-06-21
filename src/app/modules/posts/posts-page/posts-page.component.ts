@@ -71,9 +71,6 @@ export class PostsPageComponent implements OnInit {
         postAdd.body = result[1];
         postAdd.userId = 1;
 
-        console.log(postAdd);
-        console.log(this.isSelected);
-
         if (this.isSelected) {
           this.postsUser.splice(0, 0, postAdd);
         } else {
