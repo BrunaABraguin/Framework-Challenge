@@ -4,6 +4,7 @@ import Post from "src/app/shared/models/post";
 import { User } from "src/app/shared/models/user";
 import { MatDialog, MatSnackBar } from "@angular/material";
 import { AddPostComponent } from "./add-post/add-post.component";
+import { DeletePostComponent } from "./delete-post/delete-post.component";
 @Component({
   selector: "app-posts-page",
   templateUrl: "./posts-page.component.html",
@@ -24,6 +25,8 @@ export class PostsPageComponent implements OnInit {
   isSelected: boolean;
   title: string;
   body: string;
+
+  durationInSeconds = 3;
 
   ngOnInit() {
     this.fetchAllPosts();
@@ -52,8 +55,17 @@ export class PostsPageComponent implements OnInit {
 
   deleteAPost(post) {
     this.postsService.deletePost(post.id).subscribe(() => {
-      const index = this.postsUser.indexOf(post);
-      this.postsUser.splice(index, 1);
+      if (this.isSelected) {
+        const index = this.postsUser.indexOf(post);
+        this.postsUser.splice(index, 1);
+      } else {
+        const index = this.posts.indexOf(post);
+        this.posts.splice(index, 1);
+      }
+
+      this._snackBar.openFromComponent(DeletePostComponent, {
+        duration: this.durationInSeconds * 1000,
+      });
     });
   }
 
