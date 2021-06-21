@@ -18,7 +18,7 @@
       padding: 1.25rem 1.5rem;
     }
 
-    @media (min-width: 1100px) {
+    @media (min-width: 1700px) {
       width: 58%;
     }
   }
@@ -56,6 +56,12 @@ button.mat-icon-button.mat-button-base {
   position: fixed;
   right: 18rem;
   bottom: 6rem;
+  z-index: 10;
+
+  @media (max-width: 1024px) {
+    right: 4rem;
+    bottom: 2.2rem;
+  }
 
   @media (max-width: 780px) {
     right: 3.5rem;
@@ -65,6 +71,5 @@ button.mat-icon-button.mat-button-base {
   @media (max-width: 426px) {
     right: 2rem;
     bottom: 0rem;
-    z-index: 10;
   }
 }
