@@ -23,8 +23,9 @@ export class AlbumsService {
     return this.httpclient.get(API.API_URL + '/albums', { params: param });
   }
 
-  getPhotosAlbum(): Observable<any> {
-    return this.httpclient.get(API.API_URL + '/photos');
+  getPhotosAlbum(albumId: string): Observable<any> {
+    const param = new HttpParams().set('albumId', albumId);
+    return this.httpclient.get(API.API_URL + '/photos', { params: param });
   }
 
   addAlbum(albumAdd: Album): Observable<any> {

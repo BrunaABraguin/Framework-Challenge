@@ -18,7 +18,11 @@ import { AddPostComponent } from "./posts-page/add-post/add-post.component";
 import { DeletePostComponent } from './posts-page/delete-post/delete-post.component';
 
 @NgModule({
-  declarations: [PostsPageComponent, AddPostComponent, DeletePostComponent],
+  declarations: [
+    PostsPageComponent,
+    AddPostComponent,
+    DeletePostComponent,
+  ],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -33,6 +37,9 @@ import { DeletePostComponent } from './posts-page/delete-post/delete-post.compon
     MatDialogModule,
   ],
   providers: [PostsService],
-  entryComponents: [AddPostComponent, DeletePostComponent],
+  entryComponents: [
+    AddPostComponent,
+    DeletePostComponent,
+  ],
 })
 export class PostsModule {}

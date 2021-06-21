@@ -1,7 +1,7 @@
+import { Album } from "./../../../shared/models/album";
 import { Photo } from "./../../../shared/models/photo";
 import { AlbumsService } from "./../albums.service";
 import { Component, OnInit } from "@angular/core";
-import { Album } from "src/app/shared/models/album";
 import { User } from "src/app/shared/models/user";
 
 @Component({
@@ -21,6 +21,8 @@ export class AlbumsPageComponent implements OnInit {
   AlbumsUserId: number;
   PhotosAlbumId: number;
 
+  isSelected: boolean;
+
   ngOnInit() {
     this.fetchAllAlbums();
     this.fetchAllUsers();
@@ -38,19 +40,17 @@ export class AlbumsPageComponent implements OnInit {
     });
   }
 
-  fetchAllPhotos() {
-    this.albumsService.getPhotosAlbum().subscribe((data) => {
-      this.photosAlbum = data;
-    });
-  }
-
-  onUserSelected(albumUserId: any) {
-    this.fetchAllPhotos();
-
+  onUserSelected(albumUserId) {
+    this.isSelected = false;
     this.albumsService.getAlbumByUser(albumUserId).subscribe((data) => {
       this.albumsUser = data;
     });
   }
 
-  onAlbumSelected(){};
+  onAlbumSelected(PhotosAlbumId) {
+    this.isSelected = true;
+    this.albumsService.getPhotosAlbum(PhotosAlbumId).subscribe((data) => {
+      this.photosAlbum = data;
+    });
+  }
 }

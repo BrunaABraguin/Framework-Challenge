@@ -1,6 +1,6 @@
 <section class="section-panel">
   <h2>Álbuns</h2>
-  <div>
+  <div class="filters">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title> <mat-icon>account_circle</mat-icon> </mat-panel-title>
@@ -41,15 +41,29 @@
   </div>
 </section>
 
-<table>
+<table
+  [ngClass]="{
+    hidden: isSelected,
+    visible: !isSelected
+  }"
+>
   <tbody>
     <tr *ngFor="let album of albumsUser">
       <td>{{ album.title }}</td>
-      <!-- <td *ngFor="let photo of photosAlbum">
-        <div *ngIf="photo.albumId === album.id">
-          <img src="{{ photo.thumbnailUrl }}" />
-        </div>
-      </td> -->
+    </tr>
+  </tbody>
+</table>
+
+<table
+  [ngClass]="{
+    hidden: !isSelected,
+    visible: isSelected
+  }"
+>
+  <tbody>
+    <tr *ngFor="let photo of photosAlbum">
+      <td>{{ photo.title }}</td>
+      <td><img src="{{ photo.thumbnailUrl }}" /></td>
     </tr>
   </tbody>
 </table>

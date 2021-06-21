@@ -5,6 +5,7 @@ import { User } from "src/app/shared/models/user";
 import { MatDialog, MatSnackBar } from "@angular/material";
 import { AddPostComponent } from "./add-post/add-post.component";
 import { DeletePostComponent } from "./delete-post/delete-post.component";
+import { UncompletedComponent } from 'src/app/shared/uncompleted/uncompleted.component';
 @Component({
   selector: "app-posts-page",
   templateUrl: "./posts-page.component.html",
@@ -79,14 +80,21 @@ export class PostsPageComponent implements OnInit {
       const postAdd = new Post();
 
       if (result != null) {
-        postAdd.title = result[0];
-        postAdd.body = result[1];
-        postAdd.userId = 1;
+        if (result[0] == null || result[1] == null) {
+          this._snackBar.openFromComponent(UncompletedComponent, {
+            duration: this.durationInSeconds * 1000,
+          });
+        }
 
-        if (this.isSelected) {
-          this.postsUser.splice(0, 0, postAdd);
-        } else {
-          this.posts.splice(0, 0, postAdd);
+        if (result[0] != null && result[1] != null) {
+          postAdd.title = result[0];
+          postAdd.body = result[1];
+          postAdd.userId = 1;
+          if (this.isSelected) {
+            this.postsUser.splice(0, 0, postAdd);
+          } else {
+            this.posts.splice(0, 0, postAdd);
+          }
         }
       }
     });

@@ -31,6 +31,7 @@ body {
 }
 
 .hidden {
+  display: none;
   visibility: hidden;
 }
 
@@ -53,4 +54,29 @@ body {
   @media (max-width: 426px) {
     max-width: 12rem;
   }
+}
+
+.input-title {
+  outline: none;
+  border: none;
+  border-bottom: 0.125rem solid var(--dark-primary-color);
+  width: 100%;
+  margin-bottom: 1rem;
+  line-height: 1.5625rem;
+}
+
+.input-body {
+  outline: none;
+  border: 0.125rem solid var(--dark-primary-color);
+  width: 100%;
+  margin-bottom: 1rem;
+  line-height: 1.5625rem;
+  border-radius: 0.25rem;
+}
+
+.deleted, .uncompleted {
+  color:white;
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: bolder;
 }
