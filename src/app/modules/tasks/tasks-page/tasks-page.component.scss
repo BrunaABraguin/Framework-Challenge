@@ -34,8 +34,8 @@
 
 .container {
   display: flex;
-  justify-content: center;
-  margin-top: 2rem;
+  justify-content: space-between;
+  margin-right: 1.25rem;
 }
 
 button.mat-icon-button.mat-button-base {
@@ -71,5 +71,11 @@ button.mat-icon-button.mat-button-base {
   @media (max-width: 426px) {
     right: 2rem;
     bottom: 0rem;
+  }
+}
+
+h2 {
+  @media (max-width: 1024px) {
+    visibility: hidden;
   }
 }

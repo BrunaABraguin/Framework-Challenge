@@ -9,6 +9,7 @@ import { User } from "src/app/shared/models/user";
   styleUrls: ["./posts-page.component.scss"],
 })
 export class PostsPageComponent implements OnInit {
+
   constructor(private postsService: PostsService) {}
   posts: Post[];
   users: User[];
@@ -57,14 +58,7 @@ export class PostsPageComponent implements OnInit {
     });
   }
 
-  updateAPost(post) {
-    this.postsService.patchPost(post.id).subscribe((data) => {
-      console.log(this.updatePost);
-      this.updatePost = data;
-    });
-  }
-
-  deletePost(post) {
+  deleteAPost(post) {
     this.postsService.deletePost(post.id).subscribe(() => {
       const index = this.postsUser.indexOf(post);
       this.postsUser.splice(index, 1);

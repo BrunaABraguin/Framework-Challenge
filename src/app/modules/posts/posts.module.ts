@@ -6,15 +6,14 @@ import { PostsPageComponent } from "./posts-page/posts-page.component";
 import { HttpClientModule } from "@angular/common/http";
 import {
   MatExpansionModule,
-  MatAccordion,
   MatSelectModule,
   MatIconModule,
-  MatDividerModule,
   MatListModule,
   MatCardModule,
   MatButtonModule,
+  MatMenuModule,
 } from "@angular/material";
-import { AddPostComponent } from './posts-page/add-post/add-post.component';
+import { AddPostComponent } from "./posts-page/add-post/add-post.component";
 
 @NgModule({
   declarations: [PostsPageComponent, AddPostComponent],
@@ -25,10 +24,10 @@ import { AddPostComponent } from './posts-page/add-post/add-post.component';
     MatSelectModule,
     MatExpansionModule,
     MatIconModule,
-    MatDividerModule,
     MatListModule,
     MatCardModule,
     MatButtonModule,
+    MatMenuModule,
   ],
   providers: [PostsService],
 })

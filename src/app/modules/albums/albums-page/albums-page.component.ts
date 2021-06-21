@@ -9,6 +9,7 @@ import { User } from "src/app/shared/models/user";
   styleUrls: ["./albums-page.component.scss"],
 })
 export class AlbumsPageComponent implements OnInit {
+
   constructor(private albumsService: AlbumsService) {}
   albums: Album[];
 

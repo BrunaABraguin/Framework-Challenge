@@ -1,51 +1,49 @@
-<h2>Lista de tarefas</h2>
-<main>
-  <section class="container">
-    <mat-form-field appearance="fill">
-      <mat-label>Selecione uma Lista de Tarefas</mat-label>
-      <mat-select
-        [(ngModel)]="TasksUserId"
-        (ngModelChange)="onUserSelected($event)"
-      >
-        <mat-option *ngFor="let user of users" [value]="user.id">{{
-          user.name
-        }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </section>
+<button
+  mat-fab
+  color="primary"
+  [ngClass]="{
+    hidden: !isSelected,
+    visible: isSelected
+  }"
+  class="add-task"
+  (click)="openDialog()"
+>
+  <mat-icon>add</mat-icon>
+</button>
 
-  <mat-list
-    [ngClass]="{
-      hidden: !isSelected,
-      visible: isSelected
-    }"
-  >
-    <button
-      mat-fab
-      color="primary"
-      [ngClass]="{
-        hidden: !isSelected,
-        visible: isSelected
-      }"
-      class="add-task"
-      (click)="openDialog()"
+<section class="container">
+  <h2>Lista de tarefas</h2>
+  <mat-form-field appearance="fill">
+    <mat-label>Autores</mat-label>
+    <mat-select
+      [(ngModel)]="TasksUserId"
+      (ngModelChange)="onUserSelected($event)"
     >
-      <mat-icon>add</mat-icon>
-    </button>
-    <mat-card>
-      <mat-checkbox *ngFor="let task of tasksUser" [(ngModel)]="task.completed"
-        >
-        <span class="checkbox-title">{{ task.title }}</span>
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-          <mat-icon class="more-icon">more_vert</mat-icon>
+      <mat-option *ngFor="let user of users" [value]="user.id">{{
+        user.name
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</section>
+
+<mat-list
+  [ngClass]="{
+    hidden: !isSelected,
+    visible: isSelected
+  }"
+>
+  <mat-card>
+    <mat-checkbox *ngFor="let task of tasksUser" [(ngModel)]="task.completed">
+      <span class="checkbox-title">{{ task.title }}</span>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon class="more-icon">more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="deleteATask(task)">
+          <mat-icon>delete</mat-icon>
+          <span>Deletar</span>
         </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="deleteATask(task)">
-            <mat-icon>delete</mat-icon>
-            <span>Deletar</span>
-          </button>
-        </mat-menu>
-      </mat-checkbox>
-    </mat-card>
-  </mat-list>
-</main>
+      </mat-menu>
+    </mat-checkbox>
+  </mat-card>
+</mat-list>
