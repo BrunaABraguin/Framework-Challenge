@@ -9,6 +9,7 @@ import {
   MatSelectModule,
   MatExpansionModule,
   MatIconModule,
+  MatGridListModule,
 } from "@angular/material";
 
 @NgModule({
@@ -20,6 +21,7 @@ import {
     MatSelectModule,
     MatExpansionModule,
     MatIconModule,
+    MatGridListModule,
   ],
   providers: [AlbumsService],
 })

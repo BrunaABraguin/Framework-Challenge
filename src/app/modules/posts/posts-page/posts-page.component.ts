@@ -29,11 +29,14 @@ export class PostsPageComponent implements OnInit {
   title: string;
   body: string;
 
+  titleChoice: string;
   durationInSeconds = 3;
 
   ngOnInit() {
     this.fetchAllPosts();
     this.fetchAllUsers();
+
+    this.isSelected = true;
   }
 
   fetchAllPosts() {
@@ -49,6 +52,7 @@ export class PostsPageComponent implements OnInit {
   }
 
   onUserSelected(postsUserId) {
+    this.titleChoice = "Postagens";
     this.isSelected = false;
 
     this.postsService.getPostsByUser(postsUserId).subscribe((data) => {
@@ -57,6 +61,7 @@ export class PostsPageComponent implements OnInit {
   }
 
   onPostSelected(postId) {
+    this.titleChoice = "Comentários";
     this.isSelected = true;
 
     this.postsService.getCommentsByPost(postId).subscribe((data) => {

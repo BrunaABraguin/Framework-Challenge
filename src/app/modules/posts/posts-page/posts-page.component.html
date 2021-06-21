@@ -1,9 +1,18 @@
-<button mat-fab color="primary" class="add-post" (click)="openDialog()">
+<button
+  mat-fab
+  color="primary"
+  class="add-post"
+  (click)="openDialog()"
+  [ngClass]="{
+    hidden: isSelected,
+    visible: !isSelected
+  }"
+>
   <mat-icon>add</mat-icon>
 </button>
 
 <section class="section-panel">
-  <h2>Postagens</h2>
+  <h2>{{ titleChoice }}</h2>
   <div class="filters">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
@@ -45,7 +54,7 @@
   </div>
 </section>
 
-<mat-list
+<div
   [ngClass]="{
     hidden: isSelected,
     visible: !isSelected
@@ -64,18 +73,19 @@
       </button>
     </mat-menu>
   </mat-card>
-</mat-list>
+</div>
 
-<mat-list
+<div
   [ngClass]="{
     hidden: !isSelected,
     visible: isSelected
-  }">
+  }"
+>
   <mat-card *ngFor="let comment of comments">
     <mat-card-title>{{ comment.name }}</mat-card-title>
     <mat-card-content>
-      <p>{{ comment.body }}</p>
       <p>{{ comment.email }}</p>
+      <p class="comment-content">{{ comment.body }}</p>
     </mat-card-content>
   </mat-card>
-</mat-list>
+</div>
