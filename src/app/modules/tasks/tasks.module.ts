@@ -10,11 +10,11 @@ import {
   MatSelectModule,
   MatButtonModule,
   MatCardModule,
-  MatDividerModule,
   MatListModule,
   MatMenuModule,
   MatDialogModule,
   MatSnackBarModule,
+  MatExpansionModule,
 } from "@angular/material";
 import { AddTaskComponent } from "./tasks-page/add-task/add-task.component";
 import { DeleteTaskComponent } from "./tasks-page/delete-task/delete-task.component";
@@ -30,11 +30,11 @@ import { DeleteTaskComponent } from "./tasks-page/delete-task/delete-task.compon
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatDividerModule,
     MatListModule,
     MatMenuModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatExpansionModule,
   ],
   providers: [TasksService],
   entryComponents: [AddTaskComponent, DeleteTaskComponent],

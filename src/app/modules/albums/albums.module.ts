@@ -5,11 +5,22 @@ import { CommonModule } from "@angular/common";
 import { AlbumsPageComponent } from "./albums-page/albums-page.component";
 import { HttpClientModule } from "@angular/common/http";
 
-import { MatSelectModule } from "@angular/material/select";
+import {
+  MatSelectModule,
+  MatExpansionModule,
+  MatIconModule,
+} from "@angular/material";
 
 @NgModule({
   declarations: [AlbumsPageComponent],
-  imports: [CommonModule, HttpClientModule, FormsModule, MatSelectModule],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    FormsModule,
+    MatSelectModule,
+    MatExpansionModule,
+    MatIconModule,
+  ],
   providers: [AlbumsService],
 })
 export class AlbumsModule {}

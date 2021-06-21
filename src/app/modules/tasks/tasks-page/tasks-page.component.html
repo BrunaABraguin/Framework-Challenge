@@ -13,17 +13,24 @@
 
 <section class="container">
   <h2>Lista de tarefas</h2>
-  <mat-form-field appearance="fill">
-    <mat-label>Autores</mat-label>
-    <mat-select
-      [(ngModel)]="TasksUserId"
-      (ngModelChange)="onUserSelected($event)"
-    >
-      <mat-option *ngFor="let user of users" [value]="user.id">{{
-        user.name
-      }}</mat-option>
-    </mat-select>
-  </mat-form-field>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> <mat-icon>account_circle</mat-icon> </mat-panel-title>
+      <mat-panel-description> Autores</mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Autores</mat-label>
+      <mat-select
+        [(ngModel)]="TasksUserId"
+        (ngModelChange)="onUserSelected($event)"
+      >
+        <mat-option *ngFor="let user of users" [value]="user.id">{{
+          user.name
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-expansion-panel>
 </section>
 
 <mat-list
