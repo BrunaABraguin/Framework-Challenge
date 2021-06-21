@@ -1,15 +1,16 @@
-import { PostsService } from './../posts.service';
-import { Component, OnInit } from '@angular/core';
-import Post from 'src/app/shared/models/post';
-import { User } from 'src/app/shared/models/user';
-import { MatDialog, MatSnackBar } from '@angular/material';
-import { AddPostComponent } from './add-post/add-post.component';
-import { DeletePostComponent } from './delete-post/delete-post.component';
-import { UncompletedComponent } from 'src/app/shared/uncompleted/uncompleted.component';
+import { Comment } from "./../../../shared/models/comment";
+import { PostsService } from "./../posts.service";
+import { Component, OnInit } from "@angular/core";
+import Post from "src/app/shared/models/post";
+import { User } from "src/app/shared/models/user";
+import { MatDialog, MatSnackBar } from "@angular/material";
+import { AddPostComponent } from "./add-post/add-post.component";
+import { DeletePostComponent } from "./delete-post/delete-post.component";
+import { UncompletedComponent } from "src/app/shared/uncompleted/uncompleted.component";
 @Component({
-  selector: 'app-posts-page',
-  templateUrl: './posts-page.component.html',
-  styleUrls: ['./posts-page.component.scss'],
+  selector: "app-posts-page",
+  templateUrl: "./posts-page.component.html",
+  styleUrls: ["./posts-page.component.scss"],
 })
 export class PostsPageComponent implements OnInit {
   constructor(
@@ -21,8 +22,9 @@ export class PostsPageComponent implements OnInit {
   posts: Post[];
   users: User[];
   postsUser: Post[];
+  comments: Comment[];
   PostsUserId: number;
-
+  PostId: number;
   isSelected: boolean;
   title: string;
   body: string;
@@ -46,11 +48,20 @@ export class PostsPageComponent implements OnInit {
     });
   }
 
-  onUserSelected(postsUserId: any) {
-    this.isSelected = true;
+  onUserSelected(postsUserId) {
+    this.isSelected = false;
 
     this.postsService.getPostsByUser(postsUserId).subscribe((data) => {
       this.postsUser = data;
+    });
+  }
+
+  onPostSelected(postId) {
+    this.isSelected = true;
+
+    this.postsService.getCommentsByPost(postId).subscribe((data) => {
+      this.comments = data;
+      console.log(this.comments);
     });
   }
 
@@ -72,14 +83,14 @@ export class PostsPageComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(AddPostComponent, {
-      width: '38rem',
+      width: "38rem",
       data: { title: this.title, body: this.body },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       const postAdd = new Post();
 
-      if (result != null || (result = '')) {
+      if (result != null || (result = "")) {
         if (result[0] == null || result[1] == null) {
           this._snackBar.openFromComponent(UncompletedComponent, {
             duration: this.durationInSeconds * 1000,

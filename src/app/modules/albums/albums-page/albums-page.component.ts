@@ -19,6 +19,7 @@ export class AlbumsPageComponent implements OnInit {
 
   message: string;
   AlbumsUserId: number;
+  AlbumId: number;
   PhotosAlbumId: number;
 
   isSelected: boolean;

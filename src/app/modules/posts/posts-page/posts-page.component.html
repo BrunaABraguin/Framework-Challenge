@@ -4,27 +4,53 @@
 
 <section class="section-panel">
   <h2>Postagens</h2>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title> <mat-icon>account_circle</mat-icon> </mat-panel-title>
-      <mat-panel-description> Autores</mat-panel-description>
-    </mat-expansion-panel-header>
+  <div class="filters">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> <mat-icon>account_circle</mat-icon> </mat-panel-title>
+        <mat-panel-description> Autores</mat-panel-description>
+      </mat-expansion-panel-header>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Autor</mat-label>
-      <mat-select
-        [(ngModel)]="PostsUserId"
-        (ngModelChange)="onUserSelected($event)"
-      >
-        <mat-option *ngFor="let user of users" [value]="user.id">{{
-          user.name
-        }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </mat-expansion-panel>
+      <mat-form-field appearance="fill">
+        <mat-label>Autor</mat-label>
+        <mat-select
+          [(ngModel)]="PostsUserId"
+          (ngModelChange)="onUserSelected($event)"
+        >
+          <mat-option *ngFor="let user of users" [value]="user.id">{{
+            user.name
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> <mat-icon>comment</mat-icon> </mat-panel-title>
+        <mat-panel-description> Postagens</mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Postagem</mat-label>
+        <mat-select
+          [(ngModel)]="PostId"
+          (ngModelChange)="onPostSelected($event)"
+        >
+          <mat-option *ngFor="let post of posts" [value]="post.id">{{
+            post.title
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-expansion-panel>
+  </div>
 </section>
 
-<mat-list>
+<mat-list
+  [ngClass]="{
+    hidden: isSelected,
+    visible: !isSelected
+  }"
+>
   <mat-card *ngFor="let post of postsUser">
     <mat-card-title>{{ post.title }}</mat-card-title>
     <mat-card-content> {{ post.body }}</mat-card-content>
@@ -42,21 +68,14 @@
 
 <mat-list
   [ngClass]="{
-    hidden: isSelected,
-    visible: !isSelected
-  }"
->
-  <mat-card *ngFor="let post of posts">
-    <mat-card-title>{{ post.title }}</mat-card-title>
-    <mat-card-content> {{ post.body }}</mat-card-content>
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon class="more-icon">more_horiz</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="deleteAPost(post)">
-        <mat-icon>delete</mat-icon>
-        <span>Deletar</span>
-      </button>
-    </mat-menu>
+    hidden: !isSelected,
+    visible: isSelected
+  }">
+  <mat-card *ngFor="let comment of comments">
+    <mat-card-title>{{ comment.name }}</mat-card-title>
+    <mat-card-content>
+      <p>{{ comment.body }}</p>
+      <p>{{ comment.email }}</p>
+    </mat-card-content>
   </mat-card>
 </mat-list>

@@ -19,21 +19,17 @@ export class PostsService {
     return this.httpclient.get(API.API_URL + "/posts", { params: param });
   }
 
+  getCommentsByPost(postId: string): Observable<any> {
+    const param = new HttpParams().set("postId", postId);
+    return this.httpclient.get(API.API_URL + "/comments", { params: param });
+  }
+
   getUsersName(): Observable<any> {
     return this.httpclient.get(API.API_URL + "/users");
   }
 
   addPost(postAdd: Post): Observable<any> {
     return this.httpclient.post(API.API_URL + "/posts", postAdd);
-  }
-
-  patchPost(post: string): Observable<any> {
-    const param = new HttpParams().set("id", post);
-
-    return this.httpclient.patch(
-      API.API_URL + "/posts/" + { params: param },
-      JSON.stringify({ isRead: true })
-    );
   }
 
   deletePost(post: string): Observable<any> {
