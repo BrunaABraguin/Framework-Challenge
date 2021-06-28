@@ -3,37 +3,37 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Album } from "src/app/shared/models/album";
+const { apiURL } = environment;
 @Injectable({
   providedIn: "root",
 })
 export class AlbumsService {
-  API_URL = environment.API_URL;
 
   constructor(private httpclient: HttpClient) {}
 
   getAlbums(): Observable<any> {
-    return this.httpclient.get(this.API_URL + "/albums");
+    return this.httpclient.get(`${apiURL}albums`);
   }
 
   getUsersName(): Observable<any> {
-    return this.httpclient.get(this.API_URL + "/users");
+    return this.httpclient.get(`${apiURL}users`);
   }
 
   getAlbumByUser(albumsUserId: string): Observable<any> {
     const param = new HttpParams().set("userId", albumsUserId);
-    return this.httpclient.get(this.API_URL + "/albums", { params: param });
+    return this.httpclient.get(`${apiURL}albums`, { params: param });
   }
 
   getPhotosAlbum(albumId: string): Observable<any> {
     const param = new HttpParams().set("albumId", albumId);
-    return this.httpclient.get(this.API_URL + "/photos", { params: param });
+    return this.httpclient.get(`${apiURL}photos`, { params: param });
   }
 
   addAlbum(albumAdd: Album): Observable<any> {
-    return this.httpclient.post(this.API_URL + "/albums", albumAdd);
+    return this.httpclient.post(`${apiURL}albums`, albumAdd);
   }
 
   deleteAlbum(): Observable<any> {
-    return this.httpclient.delete(this.API_URL + "/todos/1");
+    return this.httpclient.delete(`${apiURL}todos/1`);
   }
 }
