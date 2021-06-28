@@ -1,7 +1,6 @@
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpParams } from "@angular/common/http";
-import { API } from "./../../shared/appSettings/API";
 import { Task } from "src/app/shared/models/task";
 import { environment } from 'src/environments/environment';
 

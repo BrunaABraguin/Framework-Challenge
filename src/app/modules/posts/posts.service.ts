@@ -2,7 +2,6 @@ import { Post } from "./../../shared/models/post";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { HttpClient, HttpParams } from "@angular/common/http";
-import { API } from "./../../shared/appSettings/API";
 import { environment } from 'src/environments/environment';
 
 @Injectable({
