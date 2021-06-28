@@ -12,28 +12,28 @@ export class AlbumsService {
   constructor(private httpclient: HttpClient) {}
 
   getAlbums(): Observable<any> {
-    return this.httpclient.get(`${apiURL}albums`);
+    return this.httpclient.get(`${apiURL}/albums`);
   }
 
   getUsersName(): Observable<any> {
-    return this.httpclient.get(`${apiURL}users`);
+    return this.httpclient.get(`${apiURL}/users`);
   }
 
   getAlbumByUser(albumsUserId: string): Observable<any> {
     const param = new HttpParams().set("userId", albumsUserId);
-    return this.httpclient.get(`${apiURL}albums`, { params: param });
+    return this.httpclient.get(`${apiURL}/albums`, { params: param });
   }
 
   getPhotosAlbum(albumId: string): Observable<any> {
     const param = new HttpParams().set("albumId", albumId);
-    return this.httpclient.get(`${apiURL}photos`, { params: param });
+    return this.httpclient.get(`${apiURL}/photos`, { params: param });
   }
 
   addAlbum(albumAdd: Album): Observable<any> {
-    return this.httpclient.post(`${apiURL}albums`, albumAdd);
+    return this.httpclient.post(`${apiURL}/albums`, albumAdd);
   }
 
   deleteAlbum(): Observable<any> {
-    return this.httpclient.delete(`${apiURL}todos/1`);
+    return this.httpclient.delete(`${apiURL}/todos/1`);
   }
 }

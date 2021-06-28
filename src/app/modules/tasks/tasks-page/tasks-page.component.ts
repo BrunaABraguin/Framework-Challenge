@@ -39,6 +39,8 @@ export class TasksPageComponent implements OnInit {
     this.tasksService.getTasks().subscribe(
       (data) => {
         this.tasks = data;
+        console.log(this.tasks);
+
       },
       (error: Response) => {
         this._snackBar.openFromComponent(ErrorsComponent, {
