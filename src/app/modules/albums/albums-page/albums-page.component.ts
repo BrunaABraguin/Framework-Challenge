@@ -49,8 +49,6 @@ export class AlbumsPageComponent implements OnInit {
         this._snackBar.openFromComponent(ErrorsComponent, {
           duration: this.durationInSeconds * 1000,
         });
-
-
         console.log(error);
       }
     );

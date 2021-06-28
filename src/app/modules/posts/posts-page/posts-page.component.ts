@@ -97,7 +97,6 @@ export class PostsPageComponent implements OnInit {
     this.postsService.getCommentsByPost(postId).subscribe(
       (data) => {
         this.comments = data;
-        console.log(this.comments);
       },
       (error: Response) => {
         this._snackBar.openFromComponent(ErrorsComponent, {
